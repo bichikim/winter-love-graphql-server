@@ -1,0 +1,36 @@
+#docs
+.vuepress
+.styleguidist
+
+# dependencies
+node_modules
+
+# logs
+npm-debug.log
+yarn-error.log
+test/unit/coverage
+selenium-debug.log
+.nyc_output
+.coverage/
+
+# project compile results
+dist
+
+# .lock
+package-lock.json
+
+# tests
+#test
+cypress
+
+
+# Editor directories and files
+.elasticbeanstalk/
+.idea
+.vscode
+*.suo
+*.ntvs*
+*.njsproj
+
+# env config
+.env
