@@ -1,7 +1,7 @@
 import {model, Schema} from 'mongoose'
 const {ObjectId, Date} = Schema.Types
 
-model('Promise', new Schema<any>({
+model('Engage', new Schema<any>({
   id: ObjectId,
   target: {type: ObjectId, required: true, ref: 'Product'},
   memberList: [{user: {type: ObjectId, ref: 'User'}, type: String}],

@@ -4,7 +4,7 @@ import ProductObject from '@/objects/ProductObject'
 import {Field, ID, ObjectType} from 'type-graphql'
 
 @ObjectType()
-export default class PromiseObject extends DBObject  {
+export default class EngageObject extends DBObject  {
 
   @Field(
     () => ProductObject,

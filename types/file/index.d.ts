@@ -24,3 +24,8 @@ declare module '*.vue' {
   const vue: VueConstructor
   export default vue
 }
+
+declare module '*.graphql' {
+  const graphql: any
+  export default graphql
+}
