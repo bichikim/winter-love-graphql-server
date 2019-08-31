@@ -35,3 +35,6 @@ cypress
 # env config
 .env
 .env.dev
+
+# grahpql schema.gql
+schema.gql
