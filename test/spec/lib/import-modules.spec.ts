@@ -7,15 +7,15 @@ describe('lib/import-modules', function test() {
       )
     expect(result).to.deep.equal([
       {
-        filename: 'test/mock/lib/import-modules/bar.ts',
+        path: 'test/mock/lib/import-modules/bar.ts',
         result: {default: 'bar'},
       },
       {
-        filename: 'test/mock/lib/import-modules/foo.ts',
+        path: 'test/mock/lib/import-modules/foo.ts',
         result: {default: 'foo'},
       },
       {
-        filename: 'test/mock/lib/import-modules/john.ts',
+        path: 'test/mock/lib/import-modules/john.ts',
         result: {default: 'john'},
       },
     ])

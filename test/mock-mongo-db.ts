@@ -14,3 +14,10 @@ export const init = async () => {
   // }
   global[sMockMongoInfo] = mongoDB
 }
+
+export const destroy = async () => {
+  const mongoDB: MongoMemoryServer = global[sMockMongoInfo]
+  if(mongoDB){
+    await mongoDB.stop()
+  }
+}
