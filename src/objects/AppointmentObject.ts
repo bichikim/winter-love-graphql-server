@@ -4,35 +4,32 @@ import ProductObject from '@/objects/ProductObject'
 import {Field, ID, ObjectType} from 'type-graphql'
 
 @ObjectType()
-export default class EngageObject extends DBObject  {
+export default class AppointmentObject extends DBObject  {
 
   @Field(
     () => ProductObject,
     {
-      name: 'target',
-      description: 'target a goods',
+      description: 'target witch a product',
     },
   )
   target: ProductObject
 
-  @Field({
-    name: 'start',
+  @Field(
+    {
     description: 'start date',
     nullable: false,
   })
   start: Date
 
   @Field({
-    name: 'start',
     description: 'end date',
-    nullable: false,
+    nullable: true,
   })
   end: Date
 
   @Field(
     () => PlaceObject,
     {
-      name: 'place',
       nullable: true,
   })
   place: PlaceObject

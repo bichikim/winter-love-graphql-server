@@ -20,6 +20,7 @@ interface Options {
   dateScalarMode?: 'timestamp' | 'isoDate'
   emitSchemaFile?: string
   playground?: boolean
+  port?: string
 }
 
 const getRedisPubSub = () => {
@@ -43,6 +44,7 @@ const bootstrap = async (options: Options = {}) => {
     ),
     dateScalarMode = 'timestamp',
     playground = process.env.NODE_ENV === 'development',
+    port = process.env.PORT || '10004',
   } = options
 
   const schema: GraphQLSchema = await buildSchema({
@@ -62,7 +64,7 @@ const bootstrap = async (options: Options = {}) => {
     playground,
   })
 
-  const {url} = await server.listen(process.env.PORT)
+  const {url} = await server.listen(port)
   return url
 }
 

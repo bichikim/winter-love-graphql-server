@@ -34,3 +34,4 @@ cypress
 
 # env config
 .env
+.env.dev

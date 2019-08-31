@@ -1,6 +1,8 @@
+import AppointmentObject from '@/objects/AppointmentObject'
 import DBObject from '@/objects/DBObject'
-import {Field} from 'type-graphql'
+import {Field, FieldResolver, ObjectType, Root} from 'type-graphql'
 
+@ObjectType()
 export default class PlaceObject extends DBObject {
   @Field({
     name: 'name',
@@ -24,4 +26,5 @@ export default class PlaceObject extends DBObject {
     nullable: true,
   })
   lng: string
+
 }

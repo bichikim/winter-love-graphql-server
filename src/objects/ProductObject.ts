@@ -5,8 +5,7 @@ import {Field, ID, ObjectType} from 'type-graphql'
 export default class ProductObject extends DBObject {
 
   @Field({
-    name: 'title',
-    description: 'goods name',
+    description: 'product name',
   })
   title: string
 }
