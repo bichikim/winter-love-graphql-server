@@ -1,4 +1,6 @@
 import 'reflect-metadata'
+import clearResolvers from './clear-resolvers'
+import clearSchemas from './clear-schemas'
 import {destroy as mongoDestroy, init as mongoInit} from './mock-mongo-db'
 
 import mongoose from 'mongoose'
@@ -12,4 +14,6 @@ before(async function() {
 
 after(async function() {
   await mongoDestroy()
+  clearResolvers()
+  clearSchemas()
 })
