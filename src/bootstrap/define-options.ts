@@ -1,11 +1,11 @@
 import {clone, trim} from 'lodash'
-import Options from './Options'
+import Options, {RequiredOptions} from './Options'
 
 const join = (...args: string[]) => {
   return args.map((arg: string) => (trim(arg, '/'))).join('/')
 }
 
-export default (options: Options = {}): Required<Options> => {
+export default (options: Options = {}): RequiredOptions => {
   const {
     src = process.env.SRC || 'src',
     cwd = process.cwd(),
@@ -24,9 +24,10 @@ export default (options: Options = {}): Required<Options> => {
       redis: pubSubRedis = process.env.PUB_SUB_REDIS === 'true',
     } = {},
     mongoDB: {
-      url: mongoDBUrl = process.env.MONGODB_URL,
+      url: mongoDBUrl = process.env.MONGODB_URL || null,
       schemas: mongoDBSchemas
         = process.env.MONGODB_SCHEMAS || join(src, 'mongoose/**/*.ts'),
+      connect = {},
     } = {},
   } = options
 
@@ -43,6 +44,10 @@ export default (options: Options = {}): Required<Options> => {
     mongoDB: {
       url: mongoDBUrl,
       schemas: mongoDBSchemas,
+      connect: {
+        useNewUrlParser: true,
+        ...connect,
+      },
     },
     src,
   }

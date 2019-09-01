@@ -6,6 +6,7 @@ import {join} from 'path'
 import {buildSchema} from 'type-graphql'
 import defineOptions from './define-options'
 import getRedisPubSub from './get-redis-pub-sub'
+import initMongoDB from './init-mongo-db'
 import Options from './Options'
 
 let server: ApolloServer
@@ -17,6 +18,8 @@ export default async (options: Options = {}): Promise<ServerInfo> => {
     return serverInfo
   }
 
+  const promises: Array<Promise<any>> = []
+
   const {
     playground,
     dateScalarMode,
@@ -25,18 +28,21 @@ export default async (options: Options = {}): Promise<ServerInfo> => {
     emitSchemaFile,
     resolvers,
     cwd,
+    mongoDB,
   } = defineOptions(options)
 
-  console.log(join(cwd, resolvers))
-
   // create new graphql schema by Type Graphql
-  const schema: GraphQLSchema = await buildSchema({
+  promises.push(buildSchema({
     resolvers: (await importModules(resolvers))
-      .map((item: any) => (item.result.default)),
+    .map((item: any) => (item.result.default)),
     emitSchemaFile,
     dateScalarMode,
     pubSub: pubSub.redis ? getRedisPubSub() : undefined,
-  })
+  }))
+
+  promises.push(initMongoDB(mongoDB))
+
+  const [schema] = await Promise.all(promises)
 
   // create new ApolloServer
   server = new ApolloServer({

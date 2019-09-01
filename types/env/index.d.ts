@@ -2,6 +2,7 @@
 declare namespace NodeJS {
   interface ProcessEnv {
     NODE_ENV: string
+    ENV_FILE: string
     EMIT_SCHEMA_FILE: string
     PUB_SUB_REDIS_HOST: string
     PUB_SUB_REDIS_PORT: string

@@ -1,5 +1,9 @@
 import MongoDBOptions from './MongoDBOptions'
 
+interface PubSubOptions {
+  redis?: boolean,
+}
+
 /**
  * bootstrap options
  */
@@ -15,4 +19,9 @@ export default interface Options {
   pubSub?: {
     redis?: boolean,
   }
+}
+
+export interface RequiredOptions extends Required<Options>{
+  mongoDB: Required<MongoDBOptions>
+  pubSub: Required<PubSubOptions>
 }
