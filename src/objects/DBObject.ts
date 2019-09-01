@@ -10,5 +10,5 @@ export default class DBObject {
       nullable: false,
     },
   )
-  readonly id: string
+  readonly _id: string
 }
