@@ -8,7 +8,8 @@ config({
 import bootstrap from '@/bootstrap'
 import {ServerInfo} from 'apollo-server'
 
+console.info('Starting graph url server')
 bootstrap().then((serverInfo: ServerInfo) => {
   const {url} = serverInfo
-  console.log(url)
+  console.info(`url: ${url}`)
 })
