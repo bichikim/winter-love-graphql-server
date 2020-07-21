@@ -41,7 +41,7 @@
     "@typescript-eslint/eslint-plugin": "^2.1.0",
     "@typescript-eslint/parser": "^2.1.0",
     "chai": "^4.2.0",
-    "codecov": "^3.6.1",
+    "codecov": "^3.7.1",
     "cross-env": "^6.0.0",
     "eslint": "^6.4.0",
     "eslint-loader": "^3.0.0",
